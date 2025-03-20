@@ -1,6 +1,6 @@
 import streamlit as st
 import pandas as pd
-import SQLAlchemy as sa
+import sqlalchemy as sa
 
 st.title("Data Logging Test App")
 
