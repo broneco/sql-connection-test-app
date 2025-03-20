@@ -21,7 +21,9 @@ engine = sa.create_engine(conn_str)
 query = "SELECT TOP 10 * FROM [log].[openai_api_call];"
 
 # Read SQL query into Pandas DataFrame using SQLAlchemy
-df = pd.read_sql(query, con=engine)
+with engine.connect() as connection:
+    # Use the connection with pd.read_sql
+    df = pd.read_sql(query, con=connection)
 
 # Zahodit Primary Key, který se definuje v databázi
 df.drop(columns=["call_open_api_id"], inplace=True)
